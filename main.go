@@ -3,12 +3,9 @@ package main
 import (
 	"net/http"
 
-	"github.com/GuilhermeVendramini/golang-cms/core/index"
-	"github.com/GuilhermeVendramini/golang-cms/core/modules/admin"
-	"github.com/GuilhermeVendramini/golang-cms/core/modules/users"
-	"github.com/GuilhermeVendramini/golang-cms/core/utils"
-	"github.com/GuilhermeVendramini/golang-cms/modules/contact"
-	"github.com/GuilhermeVendramini/golang-cms/modules/content/article"
+	"github.com/GuilhermeVendramini/golang-cms-mysql/core/index"
+	"github.com/GuilhermeVendramini/golang-cms-mysql/core/modules/users"
+	"github.com/GuilhermeVendramini/golang-cms-mysql/core/utils"
 )
 
 func main() {
@@ -19,13 +16,13 @@ func main() {
 	users.Mux()
 
 	// Admin Mux
-	admin.Mux()
+	//admin.Mux()
 
 	// Contact Mux
-	contact.Mux()
+	//contact.Mux()
 
 	// Content Mux
-	article.Mux()
+	//article.Mux()
 
 	// Uncomment the line below to generate a demo user
 	// demo.User()

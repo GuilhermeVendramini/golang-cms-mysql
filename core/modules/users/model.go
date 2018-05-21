@@ -1,6 +1,8 @@
 package users
 
 import (
+	"fmt"
+
 	"github.com/GuilhermeVendramini/golang-cms-mysql/config"
 )
 
@@ -54,14 +56,18 @@ func GetAll() ([]User, error) {
 	// }
 	// return users, nil
 
-	rows, err := config.DB.Query("SELECT Id, Name, Email, Password, Admin FROM users")
+	rows, _ := config.DB.Query("select Id, Name, Email, Password, Admin from users")
 	defer rows.Close()
+	//rows.Scan(&users)
 
-	if rows != nil {
-		return nil, err
+	var user User
+	for rows.Next() {
+		rows.Scan(&user.ID, &user.Name, &user.Email, &user.Password, &user.Admin) //Atribuindo o resultado a estrutura users
+		users = append(users, user)
 	}
 
-	rows.Scan(&users)
+	fmt.Println("teste")
+	fmt.Println(users)
 
 	return users, nil
 

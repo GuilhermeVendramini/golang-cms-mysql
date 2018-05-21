@@ -10,10 +10,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/GuilhermeVendramini/golang-cms/config"
-	"github.com/GuilhermeVendramini/golang-cms/core/modules/file"
-	"github.com/GuilhermeVendramini/golang-cms/core/modules/users"
-	"github.com/GuilhermeVendramini/golang-cms/core/utils"
+	"github.com/GuilhermeVendramini/golang-cms-mysql/config"
+	"github.com/GuilhermeVendramini/golang-cms-mysql/core/modules/file"
+	"github.com/GuilhermeVendramini/golang-cms-mysql/core/modules/users"
+	"github.com/GuilhermeVendramini/golang-cms-mysql/core/utils"
 	"github.com/julienschmidt/httprouter"
 	"gopkg.in/mgo.v2/bson"
 )

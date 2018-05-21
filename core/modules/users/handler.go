@@ -4,14 +4,13 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/GuilhermeVendramini/golang-cms/config"
+	"github.com/GuilhermeVendramini/golang-cms-mysql/config"
 	"github.com/julienschmidt/httprouter"
-	"gopkg.in/mgo.v2/bson"
 )
 
 // User struct
 type User struct {
-	ID       bson.ObjectId `json:"id" bson:"_id,omitempty"`
+	ID       int
 	Name     string
 	Email    string
 	Password string
@@ -29,6 +28,7 @@ func List(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 	//lUser := GetLoggedUser(r)
 	vars := make(map[string]interface{})
 	//vars["LoggedUser"] = lUser
+
 	vars["Users"] = users
 	err = config.TPL.ExecuteTemplate(w, "users.html", vars)
 	HandleError(w, err)

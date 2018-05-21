@@ -1,7 +1,7 @@
 package article
 
 import (
-	"github.com/GuilhermeVendramini/golang-cms/config"
+	"github.com/GuilhermeVendramini/golang-cms-mysql/config"
 	"gopkg.in/mgo.v2"
 )
 

@@ -3,7 +3,7 @@ package index
 import (
 	"net/http"
 
-	"github.com/GuilhermeVendramini/golang-cms/core/utils"
+	"github.com/GuilhermeVendramini/golang-cms-mysql/core/utils"
 )
 
 // Mux index

@@ -4,8 +4,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/GuilhermeVendramini/golang-cms/config"
-	"github.com/GuilhermeVendramini/golang-cms/core/modules/users"
+	"github.com/GuilhermeVendramini/golang-cms-mysql/config"
+	"github.com/GuilhermeVendramini/golang-cms-mysql/core/modules/users"
 	"github.com/julienschmidt/httprouter"
 )
 

@@ -3,7 +3,7 @@ package demo
 import (
 	"fmt"
 
-	"github.com/GuilhermeVendramini/golang-cms/core/modules/users"
+	"github.com/GuilhermeVendramini/golang-cms-mysql/core/modules/users"
 )
 
 // User demo

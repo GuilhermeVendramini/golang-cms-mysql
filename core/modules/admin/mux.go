@@ -1,6 +1,6 @@
 package admin
 
-import "github.com/GuilhermeVendramini/golang-cms/core/utils"
+import "github.com/GuilhermeVendramini/golang-cms-mysql/core/utils"
 
 // Mux admin
 func Mux() {
