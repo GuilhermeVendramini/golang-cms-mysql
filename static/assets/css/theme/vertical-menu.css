@@ -1,0 +1,16 @@
+@media (min-width: 768px) {
+    .bootstrap-vertical-nav .collapse {
+        display: block;
+        
+    }
+}
+
+@media (min-width: 768px) {
+    .hidden-md-up {
+        display: none!important;
+    }
+}
+
+.bootstrap-vertical-nav {
+    margin-bottom: 20px;
+}

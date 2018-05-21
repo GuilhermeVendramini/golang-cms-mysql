@@ -1,0 +1,22 @@
+{{template "header"}}
+
+{{template "navbar" .LoggedUser}}
+
+<div class="container">
+    <div class="row pt-5 pb-5">
+        {{template "admin-navbar"}}
+        <div class="col-lg-8">
+            <h1>Users</h1>
+            <div class="mb-4">
+                <a href="/admin/add/user" class="bg-primary text-white btn mb-3 mb-md-0">Add new user</a>
+            </div>
+            <ul class="list-group">
+                {{range .Users}}
+                <li class="list-group-item d-flex justify-content-between"><a href="/user/{{.ID.Hex}}">{{.Name}}</a><div class="action-links"><a href="/admin/user/edit/{{.ID.Hex}}">Edit</a> | <a href="/admin/user/delete/{{.ID.Hex}}">Delete</a></div></li>
+                {{end}}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{{template "footer"}}

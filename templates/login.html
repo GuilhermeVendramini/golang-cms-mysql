@@ -1,0 +1,25 @@
+{{template "header"}}
+
+{{template "navbar" .LoggedUser}}
+
+<div class="container">
+    <div class="row justify-content-center pt-5 pb-5 text-center">
+        <div class="col-lg-8">
+            <h1>Login</h1>
+            <form class="form-login" method="post" action="/login/process">
+                <div class="form-group">
+                    <label for="inputEmail" class="sr-only">Email address</label>
+                    <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required="true" >
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword" class="sr-only">Password</label>
+                    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required="true">
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{{template "footer"}}
+
