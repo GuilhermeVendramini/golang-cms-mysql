@@ -5,7 +5,28 @@ Build fast and flexible websites in Golang.
 
 # How to use
 
-Change your mongodb credentials and database name in "config/db.go".
+Change your mysql credentials and database name in "config/db.go".
+
+# MYSQL Structure
+
+Create database:
+
+```sql
+CREATE DATABASE golangcms;
+```
+
+Create users table:
+
+```sql
+CREATE TABLE users (
+    Id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL,
+    Email VARCHAR(50) NOT NULL,
+    Password VARCHAR(255) NOT NULL,
+    Admin BOOLEAN
+);
+```
+
 Uncomment the line "demo.User()" inside of main.go.
 
 "demo.User()" will gerenate a demo user:
@@ -34,7 +55,7 @@ After running for the first time, comment "demo.User()" otherwise that will gene
 
 # Packages
 
-[gopkg.in/mgo.v2](https://gopkg.in/mgo.v2)
+[github.com/go-sql-driver/mysql](https://github.com/go-sql-driver/mysql)
 
 [github.com/julienschmidt/httprouter](https://github.com/julienschmidt/httprouter)
 

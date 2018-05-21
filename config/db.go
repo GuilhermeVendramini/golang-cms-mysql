@@ -3,22 +3,20 @@ package config
 import (
 	"fmt"
 
-	"gopkg.in/mgo.v2"
+	"database/sql"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 // DB database
-var DB *mgo.Database
+var DB *sql.DB
 
 func init() {
-	// Your mongodb connection
-	s, err := mgo.Dial("mongodb://localhost/golangcms")
+	db, err := sql.Open("mysql", "root:root@/golangcms")
 	if err != nil {
 		panic(err)
 	}
-	if err = s.Ping(); err != nil {
-		panic(err)
-	}
-	// Your database name
-	DB = s.DB("golangcms")
-	fmt.Println("You connected to your mongo database.")
+
+	DB = db
+	fmt.Println("You connected to your mysql database.")
 }
