@@ -25,7 +25,7 @@ func main() {
 	//article.Mux()
 
 	// Uncomment the line below to generate a demo user
-	// demo.User()
+	//demo.User()
 
 	// Server Listen
 	http.ListenAndServe(":8080", utils.Mux)

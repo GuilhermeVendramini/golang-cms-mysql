@@ -9,9 +9,9 @@
             {{template "navuser" .User}}
             <h1>Delete "{{.User.Name}}"?</h1>
             <div class="form">
-                <form method="post" action="/admin/delete/process/user/{{.User.ID.Hex}}">
+                <form method="post" action="/admin/delete/process/user/{{.User.ID}}">
                     <div class="form-group">
-                        <input type="hidden" name="user-id" value="{{.User.ID.Hex}}">
+                        <input type="hidden" name="user-id" value="{{.User.ID}}">
                     </div>
                     <input type="submit" class="btn btn-danger" value="Delete">
                 </form>

@@ -1,78 +1,76 @@
 package users
 
 import (
-	"fmt"
-
 	"github.com/GuilhermeVendramini/golang-cms-mysql/config"
 )
 
-// // Create a new User
-// func Create(user User) (User, error) {
-// 	err := Users.Insert(user)
-// 	if err != nil {
-// 		return user, errors.New("internal server error" + err.Error())
-// 	}
-// 	return user, nil
-// }
+// Create a new User
+func Create(user User) (User, error) {
+	stmtIns, err := config.DB.Prepare("INSERT INTO users (Name, Email, Password, Admin) VALUES (?, ?, ?, ?)")
+	defer stmtIns.Close()
+	if err != nil {
+		panic(err.Error())
+	}
+	stmtIns.Exec(user.Name, user.Email, user.Password, user.Admin)
+	return user, nil
+}
 
-// // Update user
-// func Update(user User, ID string) (User, error) {
-// 	err := Users.Update(bson.M{"_id": bson.ObjectIdHex(ID)}, &user)
-// 	if err != nil {
-// 		return user, err
-// 	}
-// 	return user, nil
-// }
+// Update user
+func Update(user User, ID string) (User, error) {
+	stmtUp, err := config.DB.Prepare("UPDATE users set Name = ?, Email = ?, Password = ?, Admin = ? WHERE Id = ?")
+	defer stmtUp.Close()
+	if err != nil {
+		panic(err.Error())
+	}
+	stmtUp.Exec(user.Name, user.Email, user.Password, user.Admin, ID)
+	return user, nil
+}
 
-// // Remove user
-// func Remove(ID string) error {
-// 	err := Users.Remove(bson.M{"_id": bson.ObjectIdHex(ID)})
-// 	if err != nil {
-// 		return errors.New("500 internal server error")
-// 	}
-// 	return nil
-// }
+// Remove user
+func Remove(ID string) error {
+	stmtDel, err := config.DB.Prepare("delete from users where id = ?")
+	defer stmtDel.Close()
+	if err != nil {
+		panic(err.Error())
+	}
+	stmtDel.Exec(ID)
+	return nil
+}
 
-// // GetbyID return one user by ID
-// func GetbyID(ID string) (User, error) {
-// 	user := User{}
-// 	err := Users.Find(bson.M{"_id": bson.ObjectIdHex(ID)}).One(&user)
-// 	return user, err
-// }
+// GetbyID return one user by ID
+func GetbyID(ID string) (User, error) {
+	user := User{}
+	rows, err := config.DB.Query("select Id, Name, Email, Password, Admin from users WHERE Id = ?", ID)
+	defer rows.Close()
 
-// // GetbyEmail return one user by email
-// func GetbyEmail(Email string) (User, error) {
-// 	user := User{}
-// 	err := Users.Find(bson.M{"email": Email}).One(&user)
-// 	return user, err
-// }
+	for rows.Next() {
+		rows.Scan(&user.ID, &user.Name, &user.Email, &user.Password, &user.Admin)
+	}
+	return user, err
+}
+
+// GetbyEmail return one user by email
+func GetbyEmail(Email string) (User, error) {
+	user := User{}
+	rows, err := config.DB.Query("select Id, Name, Email, Password, Admin from users WHERE Email = ?", Email)
+	defer rows.Close()
+
+	for rows.Next() {
+		rows.Scan(&user.ID, &user.Name, &user.Email, &user.Password, &user.Admin)
+	}
+	return user, err
+}
 
 // GetAll return all users
 func GetAll() ([]User, error) {
+	user := User{}
 	users := []User{}
-	// err := Users.Find(bson.M{}).Sort("-_id").All(&users)
-	// if err != nil {
-	// 	return nil, err
-	// }
-	// return users, nil
-
 	rows, _ := config.DB.Query("select Id, Name, Email, Password, Admin from users")
 	defer rows.Close()
-	//rows.Scan(&users)
 
-	var user User
 	for rows.Next() {
-		rows.Scan(&user.ID, &user.Name, &user.Email, &user.Password, &user.Admin) //Atribuindo o resultado a estrutura users
+		rows.Scan(&user.ID, &user.Name, &user.Email, &user.Password, &user.Admin)
 		users = append(users, user)
 	}
-
-	fmt.Println("teste")
-	fmt.Println(users)
-
 	return users, nil
-
-	// for rows.Next() {
-	// 	var u users
-	// 	rows.Scan(&u.id, &u.name) //Atribuindo o resultado a estrutura users
-	// }
 }
