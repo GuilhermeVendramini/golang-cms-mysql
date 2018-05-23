@@ -9,7 +9,7 @@ func Create(user User) (User, error) {
 	stmtIns, err := config.DB.Prepare("INSERT INTO users (Name, Email, Password, Admin) VALUES (?, ?, ?, ?)")
 	defer stmtIns.Close()
 	if err != nil {
-		panic(err.Error())
+		return user, err
 	}
 	stmtIns.Exec(user.Name, user.Email, user.Password, user.Admin)
 	return user, nil
@@ -17,10 +17,10 @@ func Create(user User) (User, error) {
 
 // Update user
 func Update(user User, ID string) (User, error) {
-	stmtUp, err := config.DB.Prepare("UPDATE users set Name = ?, Email = ?, Password = ?, Admin = ? WHERE Id = ?")
+	stmtUp, err := config.DB.Prepare("UPDATE users SET Name = ?, Email = ?, Password = ?, Admin = ? WHERE Id = ?")
 	defer stmtUp.Close()
 	if err != nil {
-		panic(err.Error())
+		return user, err
 	}
 	stmtUp.Exec(user.Name, user.Email, user.Password, user.Admin, ID)
 	return user, nil
@@ -28,10 +28,10 @@ func Update(user User, ID string) (User, error) {
 
 // Remove user
 func Remove(ID string) error {
-	stmtDel, err := config.DB.Prepare("delete from users where id = ?")
+	stmtDel, err := config.DB.Prepare("DELETE FROM users WHERE Id = ?")
 	defer stmtDel.Close()
 	if err != nil {
-		panic(err.Error())
+		return err
 	}
 	stmtDel.Exec(ID)
 	return nil

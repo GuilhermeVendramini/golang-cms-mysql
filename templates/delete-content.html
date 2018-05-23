@@ -11,7 +11,7 @@
             <div class="form">
                 <form method="post" action="/admin/delete/process{{.Content.URL}}">
                     <div class="form-group">
-                        <input type="hidden" name="item-id" value="{{.Content.ID.Hex}}">
+                        <input type="hidden" name="item-id" value="{{.Content.ID}}">
                     </div>
                     <input type="submit" class="btn btn-danger" value="Delete">
                 </form>
