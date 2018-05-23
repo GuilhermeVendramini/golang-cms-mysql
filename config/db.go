@@ -12,7 +12,7 @@ import (
 var DB *sql.DB
 
 func init() {
-	db, err := sql.Open("mysql", "root:root@/golangcms")
+	db, err := sql.Open("mysql", "root:root@/golangcms?parseTime=true")
 	if err != nil {
 		panic(err)
 	}

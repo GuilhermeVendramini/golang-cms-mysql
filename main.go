@@ -6,6 +6,7 @@ import (
 	"github.com/GuilhermeVendramini/golang-cms-mysql/core/index"
 	"github.com/GuilhermeVendramini/golang-cms-mysql/core/modules/users"
 	"github.com/GuilhermeVendramini/golang-cms-mysql/core/utils"
+	"github.com/GuilhermeVendramini/golang-cms-mysql/modules/content/article"
 )
 
 func main() {
@@ -22,7 +23,7 @@ func main() {
 	//contact.Mux()
 
 	// Content Mux
-	//article.Mux()
+	article.Mux()
 
 	// Uncomment the line below to generate a demo user
 	//demo.User()

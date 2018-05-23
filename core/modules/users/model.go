@@ -40,7 +40,7 @@ func Remove(ID string) error {
 // GetbyID return one user by ID
 func GetbyID(ID string) (User, error) {
 	user := User{}
-	rows, err := config.DB.Query("select Id, Name, Email, Password, Admin from users WHERE Id = ?", ID)
+	rows, err := config.DB.Query("SELECT Id, Name, Email, Password, Admin FROM users WHERE Id = ?", ID)
 	defer rows.Close()
 
 	for rows.Next() {
@@ -52,7 +52,7 @@ func GetbyID(ID string) (User, error) {
 // GetbyEmail return one user by email
 func GetbyEmail(Email string) (User, error) {
 	user := User{}
-	rows, err := config.DB.Query("select Id, Name, Email, Password, Admin from users WHERE Email = ?", Email)
+	rows, err := config.DB.Query("SELECT Id, Name, Email, Password, Admin FROM users WHERE Email = ?", Email)
 	defer rows.Close()
 
 	for rows.Next() {
@@ -65,7 +65,7 @@ func GetbyEmail(Email string) (User, error) {
 func GetAll() ([]User, error) {
 	user := User{}
 	users := []User{}
-	rows, _ := config.DB.Query("select Id, Name, Email, Password, Admin from users")
+	rows, _ := config.DB.Query("SELECT Id, Name, Email, Password, Admin FROM users")
 	defer rows.Close()
 
 	for rows.Next() {

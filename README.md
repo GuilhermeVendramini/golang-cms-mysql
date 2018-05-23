@@ -27,6 +27,23 @@ CREATE TABLE users (
 );
 ```
 
+Create articles table:
+
+```sql
+CREATE TABLE articles (
+    Id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    Title VARCHAR(255) NOT NULL,
+    Teaser TEXT,
+    Body LONGTEXT,
+    Image TEXT,
+    Tags TEXT,
+    Author VARCHAR(255),
+    Url TEXT,
+    Changed TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
 Uncomment the line "demo.User()" inside of main.go.
 
 "demo.User()" will gerenate a demo user:
