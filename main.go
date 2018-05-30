@@ -4,8 +4,10 @@ import (
 	"net/http"
 
 	"github.com/GuilhermeVendramini/golang-cms-mysql/core/index"
+	"github.com/GuilhermeVendramini/golang-cms-mysql/core/modules/admin"
 	"github.com/GuilhermeVendramini/golang-cms-mysql/core/modules/users"
 	"github.com/GuilhermeVendramini/golang-cms-mysql/core/utils"
+	"github.com/GuilhermeVendramini/golang-cms-mysql/modules/contact"
 	"github.com/GuilhermeVendramini/golang-cms-mysql/modules/content/article"
 )
 
@@ -17,10 +19,10 @@ func main() {
 	users.Mux()
 
 	// Admin Mux
-	//admin.Mux()
+	admin.Mux()
 
 	// Contact Mux
-	//contact.Mux()
+	contact.Mux()
 
 	// Content Mux
 	article.Mux()
